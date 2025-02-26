@@ -1,5 +1,15 @@
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
+import ModelContainer from "./components/model/ModelContainer";
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="h-screen bg-secondary text-opensans">
+      <Header />
+      <ModelContainer />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
