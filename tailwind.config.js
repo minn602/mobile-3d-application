@@ -4,12 +4,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#EC1D25",
-        secondary: "#F3D5D5",
+        primary: "#D12F28",
+        secondary: "#ffd3eb",
         while: "#ffffff",
+        lightgray: "#F3F3F3",
+        gray: "#979797",
       },
       fontFamily: {
-        poppins: "Poppins, serif",
+        playwrite: "Playwrite IT Moderna, serif",
+        opensans: "Open Sans, serif",
       },
     },
   },
