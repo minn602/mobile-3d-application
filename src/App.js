@@ -1,12 +1,12 @@
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import ModelContainer from "./components/model/ModelContainer";
+import ModelList from "./components/model/ModelList";
 
 function App() {
   return (
-    <div className="h-screen bg-secondary text-opensans">
+    <div className="min-h-screen text-opensans">
       <Header />
-      <ModelContainer />
+      <ModelList />
       <Footer />
     </div>
   );
