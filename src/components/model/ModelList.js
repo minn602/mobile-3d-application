@@ -19,11 +19,8 @@ const ModelList = () => {
         style={{ overflow: "visible" }}
         className="mb-8"
       >
-        <SwiperSlide>
-          <div
-            onClick={() => navigate("/~mj469/pudding")}
-            className="p-4 relative bg-[#EDE2DD] rounded-[24px]"
-          >
+        <SwiperSlide onClick={() => navigate("/~mj469/pudding")}>
+          <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/pudding.png" alt="pudding" />
             <img
               className="w-[32px] absolute right-4 bottom-4"
@@ -32,8 +29,8 @@ const ModelList = () => {
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="p-4 relative bg-[#EDE2DD] rounded-[24px]">
+        <SwiperSlide onClick={() => navigate("/~mj469/cake")}>
+          <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/cake.png" alt="cake" />
             <img
               className="w-[32px] absolute right-4 bottom-4"
@@ -42,8 +39,8 @@ const ModelList = () => {
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="p-4 relative bg-[#EDE2DD] rounded-[24px]">
+        <SwiperSlide onClick={() => navigate("/~mj469/milk")}>
+          <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/milk.png" alt="milk" />
             <img
               className="w-[32px] absolute right-4 bottom-4"
