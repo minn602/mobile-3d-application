@@ -1,8 +1,10 @@
 import { Float, Html, OrbitControls, useProgress } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
-import React, { Suspense, useState, useRef } from "react";
+import React, { Suspense, useState, useRef, useEffect } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import gsap from "gsap";
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 
 function Loader() {
   const { progress } = useProgress();
@@ -12,10 +14,41 @@ function Loader() {
 const CakeViewer = () => {
   const modelRef = useRef();
   const [wireframe, setWireframe] = useState(false);
+  const [text, setText] = useState("");
   const gltf = useLoader(
     GLTFLoader,
     process.env.PUBLIC_URL + "/models/cake.glb"
   );
+
+  useEffect(() => {
+    if (!modelRef.current) return;
+
+    const scene = modelRef.current;
+    const textMesh = scene.getObjectByName("Text");
+
+    if (textMesh) {
+      const fontLoader = new FontLoader();
+      fontLoader.load("/~mj469/font/Harlow Solid LET_Plain.json", (font) => {
+        const newGeometry = new TextGeometry(text, {
+          font: font,
+          size: 0.8,
+          height: 0.5,
+          depth: 0.1,
+        });
+
+        newGeometry.computeBoundingBox();
+        const textWidth =
+          newGeometry.boundingBox.max.x - newGeometry.boundingBox.min.x;
+        newGeometry.translate(-textWidth / 2, 0, 0);
+        newGeometry.rotateX(-Math.PI / 2);
+
+        textMesh.geometry.dispose();
+        textMesh.geometry = newGeometry;
+
+        gsap.from(textMesh.scale, { x: 0.5, y: 0.5, z: 0.5, duration: 0.5 });
+      });
+    }
+  }, [text]);
 
   return (
     <div>
@@ -44,6 +77,9 @@ const CakeViewer = () => {
         >
           {wireframe ? "Normal" : "Wireframe"}
         </button>
+      </div>
+      <div>
+        <input type="text" onChange={(e) => setText(e.target.value)} />
       </div>
     </div>
   );
