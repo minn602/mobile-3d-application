@@ -21,6 +21,7 @@ const CakeViewer = () => {
   );
 
   useEffect(() => {
+    if (!text) return;
     if (!modelRef.current) return;
 
     const scene = modelRef.current;
@@ -58,28 +59,28 @@ const CakeViewer = () => {
             <directionalLight position={[10, 10, 5]} intensity={5} />
             <directionalLight position={[-10, -10, -5]} intensity={5} />
             <OrbitControls />
-            <Float speed={1.4} rotationIntensity={1.5} floatIntensity={2.3}>
-              <mesh
-                position={[0, 0, 0]}
-                rotation={[Math.PI / 4, 0, 0]}
-                scale={1}
-              >
-                <primitive object={gltf.scene} ref={modelRef} />
-              </mesh>
-            </Float>
+            <mesh position={[0, 0, 0]} rotation={[Math.PI / 4, 0, 0]} scale={1}>
+              <primitive object={gltf.scene} ref={modelRef} />
+            </mesh>
           </Canvas>
         </div>
       </Suspense>
-      <div>
+      <div className="flex flex-col md:flex-row gap-2 max-w-80 mx-auto">
         <button
           onClick={() => setWireframe((prev) => !prev)}
           className="py-2 px-4 bg-primary text-white font-semibold rounded-full"
         >
           {wireframe ? "Normal" : "Wireframe"}
         </button>
-      </div>
-      <div>
-        <input type="text" onChange={(e) => setText(e.target.value)} />
+        <button className="py-2 px-4 bg-primary text-white font-semibold rounded-full">
+          Rotate
+        </button>
+        <input
+          className="py-2 px-4 rounded-full bg-primary text-white"
+          type="text"
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Writing on a cake"
+        />
       </div>
     </div>
   );

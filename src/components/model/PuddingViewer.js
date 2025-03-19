@@ -60,20 +60,24 @@ const PuddingViewer = () => {
             <directionalLight position={[10, 10, 5]} intensity={5} />
             <directionalLight position={[-10, -10, -5]} intensity={5} />
             <OrbitControls />
-            <Float speed={1.4} rotationIntensity={1.5} floatIntensity={2.3}>
-              <mesh position={[0, -1, 0]} scale={1}>
-                <primitive object={gltf.scene} ref={modelRef} />
-              </mesh>
-            </Float>
+            <mesh position={[0, -1, 0]} scale={1}>
+              <primitive object={gltf.scene} ref={modelRef} />
+            </mesh>
           </Canvas>
         </div>
       </Suspense>
-      <div>
+      <div className="flex flex-col gap-2 max-w-80 mx-auto">
         <button
           onClick={() => setWireframe((prev) => !prev)}
           className="py-2 px-4 bg-primary text-white font-semibold rounded-full"
         >
           {wireframe ? "Normal" : "Wireframe"}
+        </button>
+        <button
+          onClick={() => setWireframe((prev) => !prev)}
+          className="py-2 px-4 bg-primary text-white font-semibold rounded-full"
+        >
+          Rotate
         </button>
         <button
           onClick={() => handleClick()}

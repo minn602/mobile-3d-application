@@ -1,25 +1,32 @@
-import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 import { useNavigate } from "react-router";
 import "swiper/css";
 import "swiper/css/pagination";
 
 const ModelList = () => {
-  const [tab, setTab] = useState(1);
   const navigate = useNavigate();
 
   return (
-    <section className="min-h-screen px-6 mt-[70px] overflow-hidden">
-      <h3 className="my-8 text-[28px] text-primary font-bold leading-none">
+    <section className="px-6 pb-10 mt-[70px] overflow-hidden">
+      <h3 className="max-w-2xl mx-auto my-8 text-[28px] text-primary font-bold leading-none">
         Explore <br /> Your Favorite <br /> Desserts!
       </h3>
       <Swiper
         slidesPerView={1}
         spaceBetween={16}
-        style={{ overflow: "visible" }}
+        pagination
+        modules={[Pagination]}
+        style={{
+          overflow: "visible",
+          padding: "0 calc((100vw - 42rem - 1.5rem) / 2)",
+        }}
         className="mb-8"
       >
-        <SwiperSlide onClick={() => navigate("/~mj469/pudding")}>
+        <SwiperSlide
+          className="max-w-2xl"
+          onClick={() => navigate("/~mj469/pudding")}
+        >
           <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/pudding.png" alt="pudding" />
             <img
@@ -29,7 +36,10 @@ const ModelList = () => {
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide onClick={() => navigate("/~mj469/cake")}>
+        <SwiperSlide
+          className="max-w-2xl"
+          onClick={() => navigate("/~mj469/cake")}
+        >
           <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/cake.png" alt="cake" />
             <img
@@ -39,7 +49,10 @@ const ModelList = () => {
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide onClick={() => navigate("/~mj469/milk")}>
+        <SwiperSlide
+          className="max-w-2xl"
+          onClick={() => navigate("/~mj469/milk")}
+        >
           <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/milk.png" alt="milk" />
             <img

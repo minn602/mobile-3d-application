@@ -5,3 +5,13 @@
 body {
   background-color: #81a8e9;
 }
+
+.swiper-pagination {
+  bottom: -40px !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 30px !important;
+  border-radius: 60px !important;
+  background-color: #d12f28 !important;
+}

@@ -3,9 +3,9 @@ import Header from "./components/header/Header";
 
 function Layout({ children }) {
   return (
-    <div className="min-h-screen text-opensans">
+    <div className="text-opensans">
       <Header />
-      {children}
+      <div className="min-h-screen">{children}</div>
       <Footer />
     </div>
   );
