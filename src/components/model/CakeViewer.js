@@ -1,4 +1,4 @@
-import { Float, Html, OrbitControls, useProgress } from "@react-three/drei";
+import { Html, OrbitControls, useProgress } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
 import React, { Suspense, useState, useRef, useEffect } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -19,6 +19,16 @@ const CakeViewer = () => {
     GLTFLoader,
     process.env.PUBLIC_URL + "/models/cake.glb"
   );
+
+  useEffect(() => {
+    if (gltf) {
+      gltf.scene.traverse((node) => {
+        if (node.isMesh) {
+          node.material.wireframe = wireframe;
+        }
+      });
+    }
+  }, [wireframe, gltf]);
 
   useEffect(() => {
     if (!text) return;
@@ -51,6 +61,18 @@ const CakeViewer = () => {
     }
   }, [text]);
 
+  const handleRotate = () => {
+    if (modelRef.current) {
+      const currentRotation = modelRef.current.rotation.y;
+
+      gsap.to(modelRef.current.rotation, {
+        y: currentRotation + Math.PI / 6,
+        duration: 0.5,
+        ease: "power1.out",
+      });
+    }
+  };
+
   return (
     <div>
       <Suspense fallback={<Loader />}>
@@ -65,18 +87,21 @@ const CakeViewer = () => {
           </Canvas>
         </div>
       </Suspense>
-      <div className="flex flex-col md:flex-row gap-2 max-w-80 mx-auto">
+      <div className="flex flex-col gap-2 max-w-80 mx-auto">
         <button
           onClick={() => setWireframe((prev) => !prev)}
           className="py-2 px-4 bg-primary text-white font-semibold rounded-full"
         >
           {wireframe ? "Normal" : "Wireframe"}
         </button>
-        <button className="py-2 px-4 bg-primary text-white font-semibold rounded-full">
+        <button
+          onClick={handleRotate}
+          className="py-2 px-4 bg-primary text-white font-semibold rounded-full"
+        >
           Rotate
         </button>
         <input
-          className="py-2 px-4 rounded-full bg-primary text-white"
+          className="py-2 px-6 rounded-full bg-primary text-white"
           type="text"
           onChange={(e) => setText(e.target.value)}
           placeholder="Writing on a cake"

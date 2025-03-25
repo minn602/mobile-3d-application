@@ -23,10 +23,7 @@ const ModelList = () => {
         }}
         className="mb-8"
       >
-        <SwiperSlide
-          className="max-w-2xl"
-          onClick={() => navigate("/~mj469/pudding")}
-        >
+        <SwiperSlide className="max-w-2xl" onClick={() => navigate("/pudding")}>
           <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/pudding.png" alt="pudding" />
             <img
@@ -36,10 +33,7 @@ const ModelList = () => {
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide
-          className="max-w-2xl"
-          onClick={() => navigate("/~mj469/cake")}
-        >
+        <SwiperSlide className="max-w-2xl" onClick={() => navigate("/cake")}>
           <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/cake.png" alt="cake" />
             <img
@@ -49,10 +43,7 @@ const ModelList = () => {
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide
-          className="max-w-2xl"
-          onClick={() => navigate("/~mj469/milk")}
-        >
+        <SwiperSlide className="max-w-2xl" onClick={() => navigate("/milk")}>
           <div className="p-4 relative bg-[#EDE2DD] rounded-[24px] cursor-pointer">
             <img src="/~mj469/assets/milk.png" alt="milk" />
             <img

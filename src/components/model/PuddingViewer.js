@@ -1,6 +1,6 @@
-import { Float, Html, OrbitControls, useProgress } from "@react-three/drei";
+import { Html, OrbitControls, useProgress } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
-import React, { Suspense, useState, useRef } from "react";
+import React, { Suspense, useState, useRef, useEffect } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import gsap from "gsap";
 
@@ -17,9 +17,19 @@ const PuddingViewer = () => {
     process.env.PUBLIC_URL + "/models/pudding.glb"
   );
 
-  const handleClick = () => {
+  useEffect(() => {
+    if (gltf) {
+      gltf.scene.traverse((node) => {
+        if (node.isMesh) {
+          node.material.wireframe = wireframe;
+        }
+      });
+    }
+  }, [wireframe, gltf]);
+
+  const handlePop = () => {
     if (modelRef.current) {
-      const audio = new Audio("/~mj469/audio/pop.mp3");
+      const audio = new Audio(process.env.PUBLIC_URL + "/audio/pop.mp3");
       audio.play();
 
       gsap.to(modelRef.current.scale, {
@@ -52,6 +62,18 @@ const PuddingViewer = () => {
     }
   };
 
+  const handleRotate = () => {
+    if (modelRef.current) {
+      const currentRotation = modelRef.current.rotation.y;
+
+      gsap.to(modelRef.current.rotation, {
+        y: currentRotation + Math.PI / 6,
+        duration: 0.5,
+        ease: "power1.out",
+      });
+    }
+  };
+
   return (
     <div>
       <Suspense fallback={<Loader />}>
@@ -59,6 +81,7 @@ const PuddingViewer = () => {
           <Canvas>
             <directionalLight position={[10, 10, 5]} intensity={5} />
             <directionalLight position={[-10, -10, -5]} intensity={5} />
+            <ambientLight intensity={0.5} />
             <OrbitControls />
             <mesh position={[0, -1, 0]} scale={1}>
               <primitive object={gltf.scene} ref={modelRef} />
@@ -74,13 +97,13 @@ const PuddingViewer = () => {
           {wireframe ? "Normal" : "Wireframe"}
         </button>
         <button
-          onClick={() => setWireframe((prev) => !prev)}
+          onClick={handleRotate}
           className="py-2 px-4 bg-primary text-white font-semibold rounded-full"
         >
           Rotate
         </button>
         <button
-          onClick={() => handleClick()}
+          onClick={handlePop}
           className="py-2 px-4 bg-primary text-white font-semibold rounded-full"
         >
           Pop!

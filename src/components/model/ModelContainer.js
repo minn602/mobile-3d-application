@@ -8,19 +8,19 @@ const ModelContainer = () => {
   const location = useLocation();
   const contents = [
     {
-      pathname: "/~mj469/pudding",
+      pathname: "/pudding",
       title: "Pudding",
       desc: "Pudding is a type of food which can either be a dessert served after the main meal or a savoury (salty or sweet and spicy) dish, served as part of the main meal.",
       component: <PuddingViewer />,
     },
     {
-      pathname: "/~mj469/cake",
+      pathname: "/cake",
       title: "Cake",
       desc: "Pudding is a type of food which can either be a dessert served after the main meal or a savoury (salty or sweet and spicy) dish, served as part of the main meal.",
       component: <CakeViewer />,
     },
     {
-      pathname: "/~mj469/milk",
+      pathname: "/milk",
       title: "Milk Shake",
       desc: "Pudding is a type of food which can either be a dessert served after the main meal or a savoury (salty or sweet and spicy) dish, served as part of the main meal.",
       component: <MilkViewer />,
