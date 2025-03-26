@@ -5,14 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router";
 import ModelContainer from "./components/model/ModelContainer";
+import About from "./components/about/About";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/~mj469">
       <Routes>
-        <Route path="/~mj469" element={<App />} />
-        <Route path="/~mj469/:slug" element={<ModelContainer />} />
+        <Route path="/" element={<App />} />
+        <Route path="/:slug" element={<ModelContainer />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
