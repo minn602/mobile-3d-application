@@ -4,6 +4,10 @@
 
 This Project is an interactive 3D dessert website using Three.js and React. Users can view and interact with three dessert models - pudding, cake, and milkshake - all created in Blender.
 
+### Live Demo
+
+The project is deployed and can be accessed at: https://users.sussex.ac.uk/~mj469
+
 ### Key Features
 
 - Real-time 3D model rendering and interaction
