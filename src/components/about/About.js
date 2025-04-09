@@ -105,8 +105,39 @@ function About() {
           </ul>
         </p>
         <h3 className={heading}>Implementation</h3>
+        <p>
+          I conducted functional testing of the website and confirmed that all
+          buttons and links operate as intended.
+        </p>
         <h3 className={heading}>Deeper Understanding</h3>
+        <p>The implementation followed lab videos and YouTube tutorials.</p>
         <h3 className={heading}>Implementation and Publication</h3>
+        <p>
+          I added an About page that can be navigated to via a button on the
+          home page. The source code and original Blender files for the 3D
+          models were compressed, and I verified that they function properly
+          when the 3D folder is opened in Visual Studio Code after
+          decompression. Information necessary for running the source code in a
+          local environment has been specified in the README.md file within the
+          source code. The source code was successfully submitted to the school
+          web server and the website can be viewed through the{" "}
+          <Link
+            className={link}
+            to="https://users.sussex.ac.uk/~mj469"
+            target="_blank"
+          >
+            link
+          </Link>
+          . Additionally, version control of the source code was managed through{" "}
+          <Link
+            className={link}
+            to="https://github.com/minn602/mobile-3d-application"
+            target="_blank"
+          >
+            GitHub repository
+          </Link>
+          .
+        </p>
       </section>
     </Layout>
   );
